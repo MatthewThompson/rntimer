@@ -6,11 +6,12 @@ const SECONDS_IN_MINUTE = 60;
 const SECONDS_IN_HOUR = 60 * 60;
 
 interface Props {
-    time: number;
+    milliseconds: number;
 }
 
-export const Time = ({ time }: Props) => {
-    const totalSeconds = time < 0 ? 0 : roundUpToNearestSecond(time);
+export const Time = ({ milliseconds }: Props) => {
+    const totalSeconds =
+        milliseconds < 0 ? 0 : roundUpToNearestSecond(milliseconds);
 
     const hours = Math.floor(totalSeconds / SECONDS_IN_HOUR);
 

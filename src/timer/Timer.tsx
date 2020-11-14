@@ -42,7 +42,7 @@ export const Timer = () => {
 
     return (
         <View style={styles.container}>
-            <Time time={remaining} />
+            <Time milliseconds={remaining} />
             <Button onPress={start}>Start</Button>
             <Button onPress={stop}>Stop</Button>
         </View>
