@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect } from 'react';
 
 export function useTimer(duration: number) {
 
@@ -35,5 +35,5 @@ export function useTimer(duration: number) {
         setRemaining(duration);
     };
 
-    return { remaining, start, stop }
+    return { remaining, start, stop };
 }

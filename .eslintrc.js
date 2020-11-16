@@ -1,12 +1,9 @@
 module.exports = {
     root: true,
 
-    env: {
-      es8: true,
-    },
-
     parserOptions: {
       sourceType: 'module',
+      ecmaVersion: 8,
     },
 
     plugins: [
