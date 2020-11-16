@@ -17,7 +17,7 @@ describe('Time', () => {
         [-866005, '00:00'],
     ];
 
-    test.each(negativeTimeTestCases)('Negative time is displayed as 00:00. ms: %i, expected output: %i', (ms, time) => {
+    test.each(negativeTimeTestCases)('Negative time is displayed as 00:00. ms: %i, expected output: %s', (ms, time) => {
 
         const { queryByText } = render(<Time milliseconds={ms} />);
         expect(queryByText(time)).not.toBeNull();
@@ -39,7 +39,7 @@ describe('Time', () => {
         [1001, '00:02'],
     ];
 
-    test.each(roundSecondsTestCases)('It rounds up to the nearest second. ms: %i, expected output: %i', (ms, time) => {
+    test.each(roundSecondsTestCases)('It rounds up to the nearest second. ms: %i, expected output: %s', (ms, time) => {
 
         const { queryByText } = render(<Time milliseconds={ms} />);
         expect(queryByText(time)).not.toBeNull();
@@ -62,7 +62,7 @@ describe('Time', () => {
         [59000, '00:59'],
     ];
 
-    test.each(padSecondsTestCases)('Seconds are padded with a 0 if there is 1 digit. ms: %i, expected output: %i', (ms, time) => {
+    test.each(padSecondsTestCases)('Seconds are padded with a 0 if there is 1 digit. ms: %i, expected output: %s', (ms, time) => {
 
         const { queryByText } = render(<Time milliseconds={ms} />);
         expect(queryByText(time)).not.toBeNull();
@@ -83,7 +83,7 @@ describe('Time', () => {
         [3540000, '59:00'],
     ];
 
-    test.each(padMinutesTestCases)('pads minutes with a 0 if there is only 1 digit. ms: %i, expected output: %i', (ms, time) => {
+    test.each(padMinutesTestCases)('pads minutes with a 0 if there is only 1 digit. ms: %i, expected output: %s', (ms, time) => {
 
         const { queryByText } = render(<Time milliseconds={ms} />);
         expect(queryByText(time)).not.toBeNull();
