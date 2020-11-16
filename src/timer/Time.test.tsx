@@ -17,13 +17,13 @@ describe('Time', () => {
         [-866005, '00:00'],
     ];
 
-    it.each(negativeTimeTestCases)('displays negative time as 00:00. ms: %i, expected output: %i', (ms, time) => {
+    test.each(negativeTimeTestCases)('Negative time is displayed as 00:00. ms: %i, expected output: %i', (ms, time) => {
 
         const { queryByText } = render(<Time milliseconds={ms} />);
         expect(queryByText(time)).not.toBeNull();
     });
 
-    it('displays 00:00 if there are 0 milliseconds', () => {
+    test('00:00 is displayed if there are 0 milliseconds', () => {
 
         const { queryByText } = render(<Time milliseconds={0} />);
         expect(queryByText('00:00')).not.toBeNull();
@@ -39,7 +39,7 @@ describe('Time', () => {
         [1001, '00:02'],
     ];
 
-    it.each(roundSecondsTestCases)('rounds up to the nearest second. ms: %i, expected output: %i', (ms, time) => {
+    test.each(roundSecondsTestCases)('It rounds up to the nearest second. ms: %i, expected output: %i', (ms, time) => {
 
         const { queryByText } = render(<Time milliseconds={ms} />);
         expect(queryByText(time)).not.toBeNull();
@@ -62,7 +62,7 @@ describe('Time', () => {
         [59000, '00:59'],
     ];
 
-    it.each(padSecondsTestCases)('pads seconds with a 0 if there is 1 digit. ms: %i, expected output: %i', (ms, time) => {
+    test.each(padSecondsTestCases)('Seconds are padded with a 0 if there is 1 digit. ms: %i, expected output: %i', (ms, time) => {
 
         const { queryByText } = render(<Time milliseconds={ms} />);
         expect(queryByText(time)).not.toBeNull();
@@ -83,26 +83,26 @@ describe('Time', () => {
         [3540000, '59:00'],
     ];
 
-    it.each(padMinutesTestCases)('pads minutes with a 0 if there is only 1 digit. ms: %i, expected output: %i', (ms, time) => {
+    test.each(padMinutesTestCases)('pads minutes with a 0 if there is only 1 digit. ms: %i, expected output: %i', (ms, time) => {
 
         const { queryByText } = render(<Time milliseconds={ms} />);
         expect(queryByText(time)).not.toBeNull();
     });
 
-    it('does not display anything for hours if there are none', () => {
+    test('Nothing displayws for hours if there are none', () => {
         const { queryByText } = render(<Time milliseconds={63000} />);
 
         expect(queryByText('01:03')).not.toBeNull();
         expect(queryByText(':01:03')).toBeNull();
     });
 
-    it('displays anything for hours if there are at least one', () => {
+    test('Hours are displayed if there is at least one', () => {
         const { queryByText } = render(<Time milliseconds={3663000} />);
 
         expect(queryByText('1:01:03')).not.toBeNull();
     });
 
-    it('does not pad hours with extra 0s', () => {
+    test('Hours are not padded hours with extra 0s', () => {
         const { queryByText } = render(<Time milliseconds={3663000} />);
 
         expect(queryByText('1:01:03')).not.toBeNull();
