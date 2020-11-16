@@ -29,11 +29,11 @@ export function useTimer(duration: number) {
         setEndTime(Date.now() + duration);
     };
 
-    const stop = () => {
+    const reset = () => {
         setActive(false);
         cancelAnimationFrame(requestRef.current);
         setRemaining(duration);
     };
 
-    return { remaining, start, stop };
+    return { remaining, start, reset };
 }

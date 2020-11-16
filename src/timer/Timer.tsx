@@ -8,13 +8,13 @@ import { useTimer } from './useTimer';
 export const Timer = () => {
     const duration = 5 * 60 * 1000;
 
-    const { remaining, start, stop } = useTimer(duration);
+    const { remaining, start, reset } = useTimer(duration);
 
     return (
         <View style={styles.container}>
             <Time milliseconds={remaining} />
             <Button onPress={start}>Start</Button>
-            <Button onPress={stop}>Stop</Button>
+            <Button onPress={reset}>Reset</Button>
         </View>
     );
 };
